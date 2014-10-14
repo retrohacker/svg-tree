@@ -1,0 +1,51 @@
+<svg version="1.1"
+    baseProfile="full"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    x="0px"
+    y="0px"
+    width="{{ width }}"
+    height="{{ height }}"
+    viewBox="0 0 {{ width }} {{ height }}"
+    enable-background="new 0 0 {{ width }} {{ height }}"
+  >
+  <!--
+       Render Edges
+  -->
+  {% for edge in edges %}
+    <line
+      x1="{{ tcwidth / 2 + tcwidth * edge.x1 }}"
+      y1="{{ tcheight / 2 + tcheight * edge.y1 }}"
+      x2="{{ tcwidth / 2 + tcwidth * edge.x2 }}"
+      y2="{{ tcheight / 2 + tcheight * edge.y2 }}"
+      stroke-width="{{ cellborder }}"
+      stroke-linecap="round" />
+  {% endfor %}
+  <!--
+       Render Nodes
+  -->
+  {% for index, cell in cells %}
+  <g transform="translate({{ tcwidth * cell.x + cellborder }},{{ tcheight * cell.y + cellborder }})">
+    <rect
+      class="cell"
+      width="{{ cellwidth }}"
+      height="{{ cellheight }}"
+      rx="{{ cellwidth/4 }}"
+      ry="{{ cellheight/4 }}"
+      stroke-width="{{ cellborder }}"
+      cell="{{ index }}"
+    />
+    <text
+      class="cell"
+      x="{{ cellwidth/2 }}"
+      y="{{ cellheight/2 }}"
+      font-size="{{ cellheight * 0.65 }}"
+      text-anchor="middle"
+      alignment-baseline="central"
+      cell="{{ index }}">
+      {{ cell.rune }}
+    </text>
+  </g>
+  {% endfor %}
+</svg>

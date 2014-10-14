@@ -1,0 +1,15 @@
+{
+  "name": "svg-tree",
+  "version": "1.0.0",
+  "description": "Builds svg trees",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodewebkit": "^0.10.4",
+    "swig": "^1.4.2"
+  }
+}
